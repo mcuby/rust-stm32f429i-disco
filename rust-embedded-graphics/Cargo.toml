@@ -1,0 +1,26 @@
+cargo-features = ["default-run"]
+
+[package]
+authors = ["Roman Shulenkov postmaster@mcu.by"]
+categories = ["embedded", "no-std"]
+name = "stm32f429i_disco"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+cortex-m = "0.6.2"
+cortex-m-rt = "0.6.12"
+panic-halt = "0.2.0"
+panic-semihosting = "0.5.3"
+cortex-m-semihosting = "0.3.5"
+ssd1306 = "0.2.6"
+embedded-graphics = "0.4.9"
+
+
+[dependencies.stm32f4]
+version = "0.10.0"
+features = ["stm32f429", "rt"]
+
+[dependencies.stm32f4xx-hal]
+version = "0.7"
+features = ["rt", "stm32f429"]
