@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "cortex-debug.armToolchainPath": "/home/mcuby/Downloads/gcc-arm-none-eabi-8-2019-q3-update/bin",
+    "configurations": [
+        {            
+            "name": "stm32f429i-disco",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv7em-none-eabihf/debug/stm32f429i_disco",
+            "svdFile": "${workspaceFolder}/STM32F429.svd",
+            "servertype": "openocd",
+            "configFiles": ["STM32F429.cfg"],
+            "preLaunchTask": "Build binary",         
+
+          
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor flash write_image erase ./target/thumbv7em-none-eabihf/build/stm32f429i_disco.bin 0x08000000"
+            ],
+            "postLaunchCommands": ["monitor reset halt"] 
+        }
+    ]    
+}
+
